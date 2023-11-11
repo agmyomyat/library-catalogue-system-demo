@@ -172,13 +172,13 @@ http://locahost:3000/books
 
 ### Query Parameters
 
-- `take` (optional): The maximum number of authors to retrieve. Default is 10.
-- `skip` (optional): The number of authors to skip. Default is 0.
+- `limit` (optional): The maximum number of authors to retrieve. Default is 10.
+- `offset` (optional): The number of authors to skip. Default is 0.
 
 ### Request Example
 
 
-    GET /authors?take=5&skip=10
+    GET /authors?limit=5&offset=10
   
   ## Get a Specific Author
 
@@ -238,12 +238,12 @@ http://locahost:3000/books
 
 ### Query Parameters
 
-- `take` (optional): The maximum number of categories to retrieve. Default is 10.
-- `skip` (optional): The number of categories to skip. Default is 0.
+- `limit` (optional): The maximum number of categories to retrieve. Default is 10.
+- `offset` (optional): The number of categories to skip. Default is 0.
 
 ### Request Example
 
-    GET /categories?take=5&skip=10
+    GET /categories?limit=5&offset=10
  
 ## Get a Specific Category
 
@@ -304,12 +304,12 @@ http://locahost:3000/books
 
 ### Query Parameters
 
-- `take` (optional): The maximum number of students to retrieve. Default is 10.
-- `skip` (optional): The number of students to skip. Default is 0.
+- `limit ` (optional): The maximum number of students to retrieve. Default is 10.
+- `offset` (optional): The number of students to skip. Default is 0.
 
 ### Request Example
 
-    GET /students?take=5&skip=10
+    GET /students?limit=5&offset=10
 
 ## Get a Specific Student
 
@@ -372,12 +372,12 @@ http://locahost:3000/books
 
 ### Query Parameters
 
-- `take` (optional): The maximum number of borrow records to retrieve. Default is 10.
-- `skip` (optional): The number of borrow records to skip. Default is 0.
+- `limit` (optional): The maximum number of borrow records to retrieve. Default is 10.
+- `offset` (optional): The number of borrow records to skip. Default is 0.
 
 ### Request Example
 
-    GET /borrow-records?take=5&skip=10
+    GET /borrow-records?limit=5&offset=10
 ## Get a Specific Borrow Record
 
 ### Endpoint
