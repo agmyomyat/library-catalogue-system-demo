@@ -311,6 +311,24 @@ http://locahost:3000/books
 
     GET /students?limit=5&offset=10
 
+## Search Students
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/students/search`
+
+### Query Parameters
+
+- `limit` (optional): The maximum number of students to retrieve. Default is 10.
+- `offset` (optional): The number of students to skip. Default is 0.
+- `email` (optional): Filter students by email address.
+- `name` (optional): Filter students by name.
+
+### Request Example
+
+    GET /students/search?limit=5&offset=10&email=aung@gmail.com&name=aung
+
 ## Get a Specific Student
 
 ### Endpoint
