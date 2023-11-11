@@ -24,6 +24,9 @@ Welcome to the Library Catalogue System, a powerful and flexible library managem
 ## Database Schema
 ![database_diagram](https://cdn.streamerchit.com/anbuchi-database-diagram.png)
 
+## Business Flow 
+![Business_flow_diagram](https://cdn.streamerchit.com/business_flow_diagram.png)
+
 ## Getting Started
 
 Follow these steps to set up and run the Library Catalogue System locally:
