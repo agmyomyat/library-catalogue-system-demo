@@ -25,6 +25,35 @@ export class StudentController {
       include: { borrowRecord: true },
     });
   }
+  @Get('search')
+  async searchStudents(
+    @Query('limit') take = 10,
+    @Query('offset') skip = 0,
+    @Query('email') email: string,
+    @Query('name') name: string,
+  ) {
+    const where: Record<string, any> = {};
+
+    if (email) {
+      where.email = {
+        contains: email,
+      };
+    }
+
+    if (name) {
+      where.name = {
+        contains: name,
+      };
+    }
+
+    return this.prisma.student.findMany({
+      take,
+      skip,
+      where,
+      include: { borrowRecord: true },
+    });
+  }
+
   @Get(':id')
   async getStudent(@Param('id') id: string) {
     return this.prisma.student.findUnique({
