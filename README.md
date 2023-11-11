@@ -55,9 +55,10 @@ All admin API endpoints are guarded by an authentication guard. You should first
 ### Endpoint
 http://locahost:3000/auth/sign-up
 
+### Note: this is for demo purpose to easily create admin account. Real App would be totally different 
+
 - **Method:** `POST`
 - **URL:** `/auth/sign-up`
-
 ### Request Body
 
     {
