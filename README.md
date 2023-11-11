@@ -25,7 +25,7 @@ Welcome to the Library Catalogue System, a powerful and flexible library managem
 ![database_diagram](https://cdn.streamerchit.com/anbuchi-database-diagram.png)
 
 ## Business Flow 
-![Business_flow_diagram](https://cdn.streamerchit.com/business_flow_diagram.png)
+![Business_flow_diagram](https://cdn.streamerchit.com/app_flow_diagram.png)
 
 ## Getting Started
 
