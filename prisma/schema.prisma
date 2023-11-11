@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+model Admin{
+  id       Int      @id @default(autoincrement())
+  username String
+  password String
+}
+
+model BookCategory {
+  id       String   @id @default(cuid())
+  title    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // Relationships
+  books    CategoriesOnBooks[]
+}
+
+model Book {
+  id          String    @id @default(cuid())
+  title       String
+  authorId    String
+  catalogId   String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  // Relationships
+  borrowRecord BorrowRecord[]
+  categories   CategoriesOnBooks[]
+  author      Author     @relation(fields: [authorId], references: [id])
+}
+
+model CategoriesOnBooks {
+  book       Book         @relation(fields: [bookId], references: [id])
+  bookId     String
+  category   BookCategory @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  @@id([bookId, categoryId])
+}
+
+model Author {
+  id   String   @id @default(cuid())
+  name String
+  // Relationships
+  books Book[]
+}
+
+model Student {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  phone     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // Relationships
+  borrowRecord BorrowRecord[]
+}
+
+model BorrowRecord {
+  id        String   @id @default(cuid())
+  bookId    String
+  studentId String
+  startDate DateTime
+  endDate   DateTime
+
+  // Relationships
+  book    Book    @relation(fields: [bookId], references: [id])
+  student Student @relation(fields: [studentId], references: [id])
+}

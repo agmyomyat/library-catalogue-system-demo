@@ -1,126 +1,418 @@
-# NestJS Starter
-[![CI](https://github.com/thisismydesign/nestjs-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/thisismydesign/nestjs-starter/actions/workflows/ci.yml)
+# Library Catalogue System
 
-#### NestJS MVC boilerplate for rapid development with battle-tested standards.
+Welcome to the Library Catalogue System, a powerful and flexible library management solution built with NestJS, Prisma, and PostgreSQL. This system allows you to efficiently manage your library's resources, organize collections, and  borrowing process.
 
-[Use this template](https://github.com/thisismydesign/nestjs-starter/generate)
+## Features
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+- **Catalogue Management:** Effortlessly organize and manage your library's collection with features such as book additions, updates, and deletions.
 
-## Stack
+- **Admin Authentication:** Secure admin authentication system to control access and protect sensitive information.
 
-It has
-- Example REST and GraphQL modules, DB using TypeORM as seen on https://docs.nestjs.com/
-- [Next.js](https://nextjs.org/) integration for React on the frontend ([howto article](https://csaba-apagyi.medium.com/nestjs-react-next-js-in-one-mvc-repo-for-rapid-prototyping-faed42a194ca))
-- Typed queries & results with GraphQL out of the box ([howto article](https://csaba-apagyi.medium.com/automagically-typed-graphql-queries-and-results-with-apollo-3731bad989aa))
-- Authentication via [Passport.js](http://www.passportjs.org/) including Social providers ([howto article](https://medium.com/csaba.apagyi/oauth2-in-nestjs-for-social-login-google-facebook-twitter-etc-8b405d570fd2)), [AWS Cognito](https://aws.amazon.com/cognito/) ([howto article](https://medium.com/csaba.apagyi/cognito-via-oauth2-in-nestjs-outsourcing-authentication-without-vendor-lock-in-ce908518f547)), and JWT strategy for REST and GraphQL
-- Docker setup
-- Typescript, ESLint
-- CI via GitHub Actions
-- Running tasks (e.g. DB seeding) via [nestjs-console](https://github.com/Pop-Code/nestjs-console)
-- Unit and integration testing via Jest
-- Heroku deployment setup
-- Google Analytics 4
+- **Search and Filters:** Quick and efficient search functionalities along with advanced filtering options for admins to find the resources they need.
 
-## Usage
+- **Borrowing System:** Manage the borrowing and returning of items, including due date reminders.
 
-The deployments below are probably in sleep mode and will take a minute to come online when you open them.
 
-### Production
+## Tech Stack
 
-https://nestjs-starter-production.herokuapp.com/
+- **NestJS:** A progressive Node.js framework for building efficient, scalable server-side applications.
 
-### Staging
+- **Prisma:** A modern database toolkit that makes database access easy with type safety and auto-generated query builders.
 
-https://nestjs-starter-staging.herokuapp.com/
+- **PostgreSQL:** A powerful, open-source relational database system for efficient data storage and retrieval.
 
-### Dev
+## Database Schema
+![database_diagram](https://cdn.streamerchit.com/anbuchi-database-diagram.png)
 
-```sh
-cp .env.example .env
-docker-compose up
-docker-compose exec web yarn lint
-docker-compose exec web yarn test
-docker-compose exec web yarn test:request
-docker-compose exec web yarn build
-docker run -it -v $PWD:/e2e -w /e2e --network="host" --entrypoint=cypress cypress/included:12.2.0 run
-```
+## Getting Started
 
-## Functionality
+Follow these steps to set up and run the Library Catalogue System locally:
 
-REST endpoint via Nest
-- http://localhost:3000/
+ **Clone the repository:**
+   
 
-JWT-protected REST endpoint via Nest
-- http://localhost:3000/private
+	   git clone https://github.com/agmyomyat/library-catalogue-system-demo.git
+       cd library-catalogue-system-demo
+       yarn install
+       yarn prisma migrate dev
+       yarn start:dev
 
-GraphQL playground (`query WhoAmI` is JWT-protected)
-- http://localhost:3000/graphql
-```qgl
-query Public {
-  things {
-    id
-    name
-  }
+ **Environment variables**
 
-  users {
-    id
-    provider
-  }
-}
+    DATABASE_URL=postgresql://....
+    SHADOW_DATABASE_URL=postgresql://shadow_database_url(optional)
+    JWT_SECRET=secret
+    JWT_EXPIRES_IN=10d
 
-# Add Header: { "Authorization": "Bearer <token>" }
-query Private {
-  whoAmI {
-    id,
-    provider,
-    providerId,
-    username,
-    name
-  }
+## API Documentation
 
-  orders {
-    id
+## Admin
+All admin API endpoints are guarded by an authentication guard. You should first log in to the 'auth' endpoint to obtain an access token. Include the authorization header with the access token when making requests to admin endpoints.
+## SignUp
+### Endpoint
+http://locahost:3000/auth/sign-up
 
-    alias
-    thing {
-      name
+- **Method:** `POST`
+- **URL:** `/auth/sign-up`
+
+### Request Body
+
+    {
+      "userName":"admin",
+      "password":"admin"
     }
-  }
-}
 
-mutation createOrder {
-  createOrder(alias: "myname", thingName: "this is a thing you can order") {
-    id
-    alias
-  }
-}
-```
+## SignIn
+### Endpoint
 
-Cognito auth (redirects to hosted Cognito UI)
-- http://localhost:3000/auth/cognito
+http://locahost:3000/auth/sign-in
 
-Google auth
-- http://localhost:3000/auth/google
 
-Next.js page
-- http://localhost:3000/home
+- **Method:** `POST`
+- **URL:** `/auth`
 
-JWT-protected Next.js page
-- http://localhost:3000/profile
+### Request Body
 
-### Useful commands
+    {
+      "userName":"admin",
+      "password":"admin"
+    }
+  ### Response Body
 
-Nest CLI:
-```
-docker-compose exec web yarn nest -- --help
-```
+      {
+          "access_token":"ey.....",
+      }
+ ## Accessing the following API endpoints should all include authorization header
+ ### Example
+ curl 'localhost:3000/books' 
+ headers  'Authorization : {access_token}'
 
-TypeORM CLI:
-```
-docker-compose exec web yarn typeorm -- --help
-```
+# BOOKs
 
-## Resources
 
-- https://github.com/jmcdo29/testing-nestjs
+### Endpoint
+http://locahost:3000/books
+
+### Get Books
+
+- **Method:** `GET`
+- **URL:** `/books`
+
+## Query Parameters
+
+- `limit` (optional): The maximum number of books to retrieve. Default is 10.
+- `offset` (optional): The number of books to skip. Default is 0.
+- `author_id` (optional): The ID of the author to filter books by.
+- `category_ids` (optional): An array of category IDs to filter books by.
+- `catalogue_id` (optional): The ID of the catalog to filter books by.
+
+## Request Example
+
+      GET /books?limit=5&author_id=123&category_ids=456,789&catalogue_id=abc
+## Get a Specific Book
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/books/:id`
+
+### Request Example
+
+    GET /books/1
+
+## Create a Book
+
+### Endpoint
+
+- **Method:** `POST`
+- **URL:** `/books`
+
+### Request Body
+
+    {
+      "title": "New Book",
+      "categoryIds": ["123", "456"],
+      "authorId": "789"
+    }
+
+## Delete a Book
+
+### Endpoint
+
+- **Method:** `DELETE`
+- **URL:** `/books/:id`
+
+### Request Example
+
+    DELETE /book/1
+## Update a Book
+
+### Endpoint
+
+- **Method:** `PATCH`
+- **URL:** `/books/:id`
+
+### Request Body
+
+
+    {
+      "title": "Updated Book Title",
+      "categoryIdsToUpdate": ["789"],
+      "categoryIdsToDelete": ["456"],
+      "authorId": "123"
+    }
+# Authors
+
+## Get Authors
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/authors`
+
+### Query Parameters
+
+- `take` (optional): The maximum number of authors to retrieve. Default is 10.
+- `skip` (optional): The number of authors to skip. Default is 0.
+
+### Request Example
+
+
+    GET /authors?take=5&skip=10
+  
+  ## Get a Specific Author
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/authors/:id`
+
+### Request Example
+
+    GET /authors/1
+ 
+ ## Create an Author
+
+### Endpoint
+
+- **Method:** `POST`
+- **URL:** `/authors`
+
+### Request Body
+
+    {
+      "name": "shakespear"
+    }
+
+## Delete an Author
+
+### Endpoint
+
+- **Method:** `DELETE`
+- **URL:** `/authors/:id`
+
+### Request Example
+
+    DELETE /authors/1
+
+## Update an Author
+
+### Endpoint
+
+- **Method:** `PATCH`
+- **URL:** `/authors/:id`
+
+### Request Body
+
+    {
+      "name": "Updated Author Name"
+    }
+## Category
+
+## Get Categories
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/categories`
+
+### Query Parameters
+
+- `take` (optional): The maximum number of categories to retrieve. Default is 10.
+- `skip` (optional): The number of categories to skip. Default is 0.
+
+### Request Example
+
+    GET /categories?take=5&skip=10
+ 
+## Get a Specific Category
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/categories/:id`
+
+### Request Example
+
+    GET /categories/1
+
+## Create a Book Category
+
+### Endpoint
+
+- **Method:** `POST`
+- **URL:** `/categories`
+
+### Request Body
+
+
+    {
+      "title": "New Category"
+    }
+
+## Delete a Book Category
+
+### Endpoint
+
+- **Method:** `DELETE`
+- **URL:** `/categories/:id`
+
+### Request Example
+
+    DELETE /categories/1
+## Update a Book Category
+
+### Endpoint
+
+- **Method:** `PATCH`
+- **URL:** `/categories/:id`
+
+### Request Body
+
+    {
+      "title": "Updated Category Title"
+    }
+
+# Student
+
+## Get Students
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/students`
+
+### Query Parameters
+
+- `take` (optional): The maximum number of students to retrieve. Default is 10.
+- `skip` (optional): The number of students to skip. Default is 0.
+
+### Request Example
+
+    GET /students?take=5&skip=10
+
+## Get a Specific Student
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/students/:id`
+
+### Request Example
+
+    GET /students/1
+
+## Create a Student
+
+### Endpoint
+
+- **Method:** `POST`
+- **URL:** `/students`
+
+### Request Body
+
+
+    {
+      "name": "Mg Mg",
+      "email": "student@gmail.com",
+      "phone": "09778711777"
+    }
+  
+  ## Delete a Student
+
+### Endpoint
+
+- **Method:** `DELETE`
+- **URL:** `/students/:id`
+
+### Request Example
+
+    DELETE /students/1
+## Update a Student
+
+### Endpoint
+
+- **Method:** `PATCH`
+- **URL:** `/students/:id`
+
+### Request Body
+
+    {
+      "name": "Updated Name",
+      "email": "updated.email@gmail.com",
+      "phone": "09778711777"
+    }
+# Book Borrow Record
+## Get Borrow Records
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/borrow-records`
+
+### Query Parameters
+
+- `take` (optional): The maximum number of borrow records to retrieve. Default is 10.
+- `skip` (optional): The number of borrow records to skip. Default is 0.
+
+### Request Example
+
+    GET /borrow-records?take=5&skip=10
+## Get a Specific Borrow Record
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL:** `/borrow-records/:id`
+
+### Request Example
+
+    GET /borrow-records/1
+
+## Create a Borrow Record
+
+### Endpoint
+
+- **Method:** `POST`
+- **URL:** `/borrow-records`
+
+### Request Body
+
+    {
+      "bookId": "1",
+      "studentId": "2",
+      "borrowDate": "2023-11-15T12:00:00Z",
+      "returnDate": "2023-12-01T12:00:00Z"
+    }
+  
+  ## Delete a Borrow Record
+
+### Endpoint
+
+- **Method:** `DELETE`
+- **URL:** `/borrow-records/:id`
+
+### Request Example
+
+    DELETE /borrow-records/1
+
