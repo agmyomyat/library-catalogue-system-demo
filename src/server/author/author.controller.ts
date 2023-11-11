@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
@@ -16,7 +17,7 @@ import { AuthGuard } from '../auth/auth.guard';
 export class AuthorController {
   constructor(private prisma: PrismaService) {}
   @Get()
-  async getAuthors(@Param('take') take = 10, @Param('skip') skip = 0) {
+  async getAuthors(@Query('limit') take = 10, @Query('offset') skip = 0) {
     return this.prisma.author.findMany({
       take,
       skip,

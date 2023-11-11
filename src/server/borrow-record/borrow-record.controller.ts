@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
@@ -16,7 +17,7 @@ import { AuthGuard } from '../auth/auth.guard';
 export class BorrowRecordController {
   constructor(private prisma: PrismaService) {}
   @Get()
-  async getBorrowRecords(@Param('take') take = 10, @Param('skip') skip = 0) {
+  async getBorrowRecords(@Query('limit') take = 10, @Query('offset') skip = 0) {
     return this.prisma.borrowRecord.findMany({ take, skip });
   }
   @Get(':id')

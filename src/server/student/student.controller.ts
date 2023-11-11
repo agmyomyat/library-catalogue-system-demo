@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
@@ -17,7 +18,7 @@ import { AuthGuard } from '../auth/auth.guard';
 export class StudentController {
   constructor(private prisma: PrismaService) {}
   @Get()
-  async getStudents(@Param('take') take = 10, @Param('skip') skip = 0) {
+  async getStudents(@Query('limit') take = 10, @Query('offset') skip = 0) {
     return this.prisma.student.findMany({
       take,
       skip,
