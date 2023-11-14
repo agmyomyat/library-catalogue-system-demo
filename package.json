@@ -27,7 +27,7 @@
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.1.6",
     "@nestjs/jwt": "^10.2.0",
-    "@nestjs/platform-express": "^9.2.1",
+    "@nestjs/platform-express": "^9.4.3",
     "commander": "^11.0.0",
     "cookie-parser": "^1.4.6",
     "nestjs-console": "^8.0.0",
