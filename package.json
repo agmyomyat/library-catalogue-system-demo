@@ -22,7 +22,7 @@
     "test:request": "jest --setupFiles dotenv-flow/config --config ./test/jest-request.json"
   },
   "dependencies": {
-    "@babel/runtime": "^7.24.6",
+    "@babel/runtime": "^7.24.7",
     "@nestjs/common": "^9.1.6",
     "@nestjs/config": "^3.2.2",
     "@nestjs/core": "^9.1.6",
