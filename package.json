@@ -44,7 +44,7 @@
     "@nestjs/schematics": "^10.2.3",
     "@nestjs/testing": "^9.2.1",
     "prisma": "^5.22.0",
-    "@types/cookie-parser": "^1.4.7",
+    "@types/cookie-parser": "^1.4.8",
     "@types/express": "^5.0.0",
     "@types/jest": "^28.1.8",
     "@types/node": "^22.10.0",
