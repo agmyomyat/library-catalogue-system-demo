@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.28.2",
-    "@nestjs/common": "^9.1.6",
+    "@nestjs/common": "^11.1.5",
     "@nestjs/config": "^3.3.0",
     "@nestjs/core": "^9.1.6",
     "@nestjs/jwt": "^11.0.0",
