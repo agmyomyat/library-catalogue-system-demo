@@ -34,7 +34,7 @@
     "nanoid": "5.1.6",
     "@prisma/client": "6.18.0",
     "reflect-metadata": "^0.1.14",
-    "rimraf": "^6.0.1",
+    "rimraf": "^6.1.0",
     "rxjs": "^7.8.2",
     "ts-morph": "^27.0.2"
   },
