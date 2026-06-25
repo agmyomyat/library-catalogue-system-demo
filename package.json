@@ -31,7 +31,7 @@
     "commander": "^15.0.0",
     "cookie-parser": "^1.4.7",
     "nestjs-console": "^10.0.0",
-    "nanoid": "5.1.15",
+    "nanoid": "5.1.16",
     "@prisma/client": "7.8.0",
     "reflect-metadata": "^0.1.14",
     "rimraf": "^6.1.3",
