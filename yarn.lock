@@ -893,10 +893,10 @@
   resolved "https://registry.yarnpkg.com/@lukeed/csprng/-/csprng-1.1.0.tgz#1e3e4bd05c1cc7a0b2ddbd8a03f39f6e4b5e6cfe"
   integrity sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==
 
-"@nestjs/cli@^12.0.7":
-  version "12.0.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-12.0.7.tgz#9cb9d0106c43f076526a9e55372ed5036fb9b535"
-  integrity sha512-yKCDYZvBJo/e/8Dmr2ajcIOXIbwyhs6/WcMVkf3MEPqVtSJtdN2mVRY0kivJYE2Ixidg8tA3tX+NUr6enOdUIg==
+"@nestjs/cli@^12.0.8":
+  version "12.0.8"
+  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-12.0.8.tgz#cdff89355d470da1c1e815aa67819a74a4d987a4"
+  integrity sha512-iqm+KXb8cnpnlD4hMBf1w2/4i1GSs0DCLI7oyP4MTmwf9KmjTG1SpAjkl/D+kKuUToycBrMF4+eSwyPVdTMGKQ==
   dependencies:
     "@angular-devkit/core" "22.2.0"
     "@angular-devkit/schematics" "22.2.0"
