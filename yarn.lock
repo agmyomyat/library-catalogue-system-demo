@@ -2444,12 +2444,7 @@ commander@15.0.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-15.0.0.tgz#96f3961f12adac1799ef3fbd8bc61d40572d1b11"
   integrity sha512-z67u4ZhzCL/Tydu1lJARtEZYWbWaN7oYLHbsuzocr6y4N6WZAagG3RQ4FW61V1/0+jImpj293XfrcYnd1qxtPg==
 
-"commander@^11.0.0 || ^12.0.0 || ^13.0.0":
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-13.1.0.tgz#776167db68c78f38dcce1f9b8d7b8b9a488abf46"
-  integrity sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==
-
-commander@^15.1.0:
+"commander@^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", commander@^15.1.0:
   version "15.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-15.1.0.tgz#397e6a353fda8e9d4e1eb9e3c0c28644cfd69406"
   integrity sha512-cgnQ88TRrWcC7pVq46RzJVRMktu3W2RcbnoidnfBsl1bmDCBwJS/udcIZpKoCrbAYYaCqsz1yZCVIgbIaU3ddQ==
@@ -4469,12 +4464,12 @@ negotiator@0.6.3:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-nestjs-console@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/nestjs-console/-/nestjs-console-10.0.0.tgz#ce91d5c603badbb13abcbed414c39a6dc92c9987"
-  integrity sha512-LlUzseDtbUoPUkM+/83NE00BytX29CyWpb4NbH57f7p1+DGA1Yb5OA9WaIZmy/uKM7Yjqb6HQeWRXUlvkkcQnw==
+nestjs-console@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/nestjs-console/-/nestjs-console-12.0.0.tgz#197a4d4648994acb17bb07c15ed6ca4de21e9a80"
+  integrity sha512-50lUcIL/uty+8wYTE9N5q8Vnn8UQdeL/XDzy7LExHX8aF2/Nnhr4oV9H6oeJYc4o3NW/1WaZ9y21lC0OclX8xw==
   dependencies:
-    commander "^11.0.0 || ^12.0.0 || ^13.0.0"
+    commander "^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
 
 node-emoji@2.2.0:
   version "2.2.0"
