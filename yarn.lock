@@ -1045,10 +1045,10 @@
   resolved "https://registry.yarnpkg.com/@lukeed/csprng/-/csprng-1.1.0.tgz#1e3e4bd05c1cc7a0b2ddbd8a03f39f6e4b5e6cfe"
   integrity sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==
 
-"@nestjs/cli@^12.0.14":
-  version "12.0.14"
-  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-12.0.14.tgz#b0e66a465946c48385860da6b54c2ed71176b3f3"
-  integrity sha512-+gZkBLpDMU/J/KItqOJtX/0ruZUZit/sr/s7F+leaTDgKXS8SrGZLVya0WhXB/iDguu9SxO0gPD1vEQQ5yxnDA==
+"@nestjs/cli@^12.0.15":
+  version "12.0.15"
+  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-12.0.15.tgz#53e51e8352d22fc4ac2b659454c14d81d7d932f7"
+  integrity sha512-oNZ70g6wtE8X82PflsW2xfW50u4XiJQwq6u4HafrgP9eVnSw6m+WqnX4/7K6ehaod5E0+WFrczjT19rx5SHlhA==
   dependencies:
     "@angular-devkit/core" "22.2.7"
     "@angular-devkit/schematics" "22.2.7"
